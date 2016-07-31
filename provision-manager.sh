@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USE_ALIYUN_MIRROR=1
+#USE_ALIYUN_MIRROR=1
 
 MANAGER_IP=$1
 
