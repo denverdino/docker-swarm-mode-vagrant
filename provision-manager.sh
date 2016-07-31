@@ -5,7 +5,7 @@
 MANAGER_IP=$1
 
 if ! which docker >/dev/null 2>&1; then
-	if [ USE_ALIYUN_MIRROR ]
+	if [ -n "$USE_ALIYUN_MIRROR" ]
 	then
 		sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list
 		curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -
@@ -16,6 +16,6 @@ if ! which docker >/dev/null 2>&1; then
 	fi
 	gpasswd -a vagrant docker
 	docker swarm init --listen-addr ${MANAGER_IP}:2377 --advertise-addr ${MANAGER_IP}
-	docker swarm join-token -q worker >> /vagrant/worker_token
+	docker swarm join-token -q worker > /vagrant/worker_token
 fi
 

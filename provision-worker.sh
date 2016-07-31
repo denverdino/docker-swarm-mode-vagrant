@@ -8,7 +8,7 @@ TOKEN=`cat /vagrant/worker_token`
 
 
 if ! which docker >/dev/null 2>&1; then
-	if [ USE_ALIYUN_MIRROR ]
+	if [ -n "$USE_ALIYUN_MIRROR" ]
 	then
 		sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list
 		curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -
